@@ -1,0 +1,50 @@
+-- Create the following tables
+	department (DeptId, DeptName, ManagerName)
+	employees (EmpId,EmpName)
+	managers (EmpId, EmpName, DeptId[fk])
+	staffs (EmpId, EmpName, DeptId[fk], Salary)
+
+
+-->
+
+
+CREATE TABLE department
+( 
+    DeptId INT AUTO_INCREMENT,
+	DeptName VARCHAR (50),
+	ManagerName VARCHAR (50),
+    PRIMARY KEY (Deptid)
+ )
+
+
+CREATE TABLE employees
+(
+	EmpId INT AUTO_INCREMENT,
+    EmpName VARCHAR (50),
+    PRIMARY KEY (EmpId)
+)
+
+
+
+CREATE TABLE managers
+(
+	EmpId INT AUTO_INCREMENT,	
+    EmpName VARCHAR (50),   
+    DeptId INT,
+    PRIMARY KEY (EmpId),
+    FOREIGN KEY (DeptId) REFERENCES department(DeptId)
+)
+
+
+
+CREATE TABLE staffs
+(
+    EmpId INT (50),	
+    PRIMARY KEY (EmpId),
+    EmpName VARCHAR (50),	
+    DeptId INT,
+    FOREIGN KEY (DeptId) REFERENCES department(DeptId),
+    SALARY DECIMAL (10,2)
+)
+
+

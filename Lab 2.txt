@@ -1,0 +1,64 @@
+1) -- Create a student table with the fields (id, name, roll, batch, dob)
+-->
+CREATE TABLE student
+(
+    Id INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR (50),
+    Roll INT,
+    Batch INT,
+    DOB DATE,
+    PRIMARY KEY (ID)
+)
+
+
+2) -- Adding values into the table
+-->
+INSERT INTO student
+VALUES (NULL, 'Name', 'Roll', 'Batch', 'DOB'),
+		(NULL, 'Rajan', '2', '2078', '1999-05-19'),
+        (NULL, 'Sarita', '3', '2078', '2000-09-25'),
+        (NULL, 'Anita', '3', '2078', '1998-11-23'),
+        (NULL, 'Samyog', '3', '2079', '1999-3-5')
+        
+
+3) -- Change or update roll no of Samyog to 4
+-->
+UPDATE student
+SET Roll = 4
+WHERE Name = 'Samyog'
+
+
+4) -- Add another column 'Level'between 'Batch'and 'DOB'
+-->
+ALTER TABLE student
+ADD COLUMN Level VARCHAR (10) 
+AFTER batch
+
+
+
+5) -- Set values of 'Level' to be 'Senior'and 'Junior'for batch 2078 and 2079 respectively
+-->
+UPDATE student
+SET Level = 'Senior' 
+WHERE Batch = 2078;
+
+UPDATE student
+SET Level = 'Junior' 
+WHERE Batch = 2079
+
+
+6) -- Change 'Batch' so as to accept string values too
+-->
+ALTER TABLE student
+MODIFY COLUMN Batch VARCHAR(10)
+
+7) -- Calculate number of students in each batch
+-->
+SELECT Batch, COUNT(*) AS Num_of_student
+FROM student 
+GROUP By Batch
+
+8) -- Remove the field 'level'from the table
+-->
+ALTER Table student
+Drop COLUMN Level

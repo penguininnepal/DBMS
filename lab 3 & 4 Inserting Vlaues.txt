@@ -1,0 +1,22 @@
+INSERT INTO employees (EmpId, EmpName)
+VALUES ('1','Ram'), 
+	('2','Sam'), 
+	('3','Hari'), 
+	('4','Pari'), 
+	('5','Harke'), 
+	('6','Chakre'), 
+	('7','Samyog'), 
+	('8','Milan'),  
+	('9','NULL'), 
+	('10','NULL');
+
+
+INSERT INTO `department`(`DeptId`, `DeptName`, `ManagerName`) VALUES ('1','HR','Prabin'), ('2','Sales','Nitesh'), ('3','Admin','Prasab'), ('4','IT','kritan'), ('5','QA','NULL');
+
+
+
+INSERT INTO `managers`(`EmpId`, `EmpName`, `DeptId`) VALUES ('1','Ram','1'), ('2','Sam','3'), ('3','Hari','2'), ('4','Pari','4'), ('5','Harke','5'), ('6','Chakre','1'), ('7','Samyog','5'), ('8','Milan','4'), ('9','NULL','2'), ('10','NULL','2')
+
+
+
+INSERT INTO `staffs`(`EmpId`, `EmpName`, `DeptId`, `SALARY`) VALUES ('1','Ram','1','63000'), ('2','Sam','3','44000'), ('3','Hari','2','23000'), ('4','Pari','4','51000'), ('5','Harke','5','32000'), ('6','Chakre','1','48000'), ('7','Samyog','5','36000'), ('8','Milan','4','54000'), ('9','NULL','2','32000'), ('10','NULL','2','26000');

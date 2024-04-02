@@ -1,0 +1,54 @@
+1) --Retrive name of Employees(Staffs) and their corresponding Departments.
+-->
+SELECT staffs.EmpName AS Staff_Name, department.DeptName AS department 
+FROM staffs 
+INNER JOIN department ON staffs.DeptId = department.DeptId;
+
+
+2) --To list all Staffs of IT Departments.
+-->
+SELECT staffs.EmpName AS Staff_Name, department.DeptName AS Department_Name 
+FROM staffs 
+JOIN department ON staffs.DeptId = department.DeptId 
+WHERE department.Deptname = "IT";
+
+
+3) --Find the number of staff in each department.
+-->
+SELECT department.DeptName AS Department_Name, COUNT(staffs.EmpId) AS Number_Of_Staff 
+FROM department 
+LEFT JOIN staffs ON department.DeptId = staffs.DeptId 
+GROUP BY department.DeptName;
+
+
+4) --Find average salary of staffs of "HR".
+-->
+SELECT AVG(Salary) AS AverageSalary 
+FROM staffs JOIN department ON staffs.DeptId = department.DeptId 
+WHERE department.DeptName = 'HR';
+
+
+5)-- Find the department with hoghest average salary.
+-->
+SELECT department.DeptName, AVG(staffs.Salary) AS Average_Salary
+FROM staffs
+JOIN department ON staffs.DeptId = department.DeptId
+GROUP BY department.DeptName
+ORDER BY Average_Salary DESC
+LIMIT 1;
+
+
+
+6) --Increase the salary of all staffs of ‘QA” dept by 15%.
+-->
+UPDATE staffs 
+INNER JOIN department ON staffs.DeptId = department.DeptId 
+SET staffs.Salary = staffs.Salary * 1.15 
+WHERE department.DeptName = "QA";
+
+
+7) --Find the department with hoghest average salary.
+-->
+SELECT department.DeptName, AVG(staffs.Salary) AS Average_Salary FROM staffs JOIN department ON staffs.DeptId = department.DeptId 
+GROUP BY department.DeptName 
+ORDER BY Average_Salary DESC LIMIT 1;
