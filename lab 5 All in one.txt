@@ -39,3 +39,6 @@ FROM staffs s1
 JOIN staffs S2 ON S1.DeptId = s2.DeptId
 AND s1.EmpId <> s2.EmpId AND s1.SALARY = S2.SALARY
 JOIN department d ON s1.DeptId = d.DeptId;
+
+
+5 ko concept hererw aafai garehuncha... 
