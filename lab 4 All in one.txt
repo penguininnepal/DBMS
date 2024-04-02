@@ -28,7 +28,7 @@ FROM staffs JOIN department ON staffs.DeptId = department.DeptId
 WHERE department.DeptName = 'HR';
 
 
-5)-- Find the department with hoghest average salary.
+5)-- Find the department with highest average salary.
 -->
 SELECT department.DeptName, AVG(staffs.Salary) AS Average_Salary
 FROM staffs
