@@ -1,0 +1,41 @@
+1) --Retrive the name of staffs who have highest Salary within each department.
+-->
+SELECT staffs.DeptId, staffs.EmpName, staffs.SALARY 
+FROM staffs
+JOIN (SELECT DeptId, MAX(SALARY) AS max_SALARY 
+FROM staffs GROUP BY DeptId)
+max_SALARIES  ON staffs.DeptId = max_SALARIES.DeptId AND staffs.SALARY = max_salaries.max_SALARY;
+
+
+2) --Find top three department with the highest total salary expenditure.
+-->
+SELECT department.DeptName, SUM(staffs.SALARY) AS total 
+FROM staffs
+JOIN department ON staffs.DeptId = department.DeptId
+GROUP BY department.DeptName 
+ORDER BY total DESC 
+LIMIT 3; 
+
+
+3) --List the department with average salary higher than overall average salary.
+-->
+SELECT department.DeptName, AVG(SALARY) AS DepartmentAverageSalary 
+FROM staffs 
+JOIN department ON staffs.DeptId = department.DeptId
+GROUP BY department.DeptName HAVING AVG(Staffs.SALARY) > (SELECT AVG (SALARY) FROM staffs);
+
+
+4) -- List the departments with difference between highest and lowest salary greater than 50000.
+-->
+SELECT department.DeptId, department.DeptName, MAX(staffs.SALARY) As highest_SALARY, MIN(staffs.SALARY) AS lowest_SALARY, MAX(staffs.SALARY) - MIN(staffs.SALARY) As SALARY_difference
+FROM department
+JOIN staffs ON department.DeptId = staffs.DeptId GROUP BY department.DeptId, department.DeptName HAVING      MAX(staffs.SALARY) - MIN(staffs.SALARY) > 5000;
+
+
+5) -- List the name of staffs who have same salary as at least one other employee in their department.
+-->
+SELECT s1.EmpNome, s1.SALARY, d.DeptId
+FROM staffs s1 
+JOIN staffs S2 ON S1.DeptId = s2.DeptId
+AND s1.EmpId <> s2.EmpId AND s1.SALARY = S2.SALARY
+JOIN department d ON s1.DeptId = d.DeptId;
